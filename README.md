@@ -10,34 +10,32 @@ Project Structure
 The project is divided into two main parts: Backend (Python-based) and Frontend (React-based).
 Backend
 The backend handles data processing, machine learning predictions, and API services.
-.
-├── Crop_recommendation.csv      # Dataset for crop prediction
-├── arima.ipynb                  # Jupyter notebook for ARIMA model (price prediction)
-├── crop_predictor.py            # Script for crop prediction model
-├── historical_prices.csv        # Dataset for historical price data
-├── main.ipynb                   # Main notebook for experimentation
-├── main.py                      # Main backend script for API
-├── model.pkl                    # Trained machine learning model (pickle file)
-├── predictor.py                 # Script for price prediction logic
-└── requirements.txt             # Python dependencies
+Crop_recommendation.csv  # Dataset for crop prediction
+arima.ipynb             # Jupyter notebook for ARIMA model (price prediction)
+crop_predictor.py       # Script for crop prediction model
+historical_prices.csv   # Dataset for historical price data
+main.ipynb              # Main notebook for experimentation
+main.py                 # Main backend script for API
+model.pkl               # Trained machine learning model (pickle file)
+predictor.py            # Script for price prediction logic
+requirements.txt        # Python dependencies
 
 Frontend
 The frontend is a React application built with Vite, using Tailwind CSS for styling.
-.
-├── public/                      # Static assets
-├── src/                         # React source code
-│   ├── Home.jsx                 # Home page component
-│   ├── PricePrediction.jsx      # Price prediction component
-│   ├── HistoricalData.jsx       # Historical data component
-│   ├── CropPrediction.jsx       # Crop prediction component
-│   └── services/api.js          # API service for backend communication
-├── .gitignore                   # Git ignore file
-├── README.md                    # Project README (this file)
-├── eslint.config.js             # ESLint configuration
-├── index.html                   # Main HTML file
-├── package-lock.json            # NPM lock file
-├── package.json                 # NPM dependencies
-└── vite.config.js               # Vite configuration
+public/                     # Static assets
+src/                        # React source code
+  Home.jsx                 # Home page component
+  PricePrediction.jsx      # Price prediction component
+  HistoricalData.jsx       # Historical data component
+  CropPrediction.jsx       # Crop prediction component
+  services/api.js          # API service for backend communication
+.gitignore                 # Git ignore file
+README.md                  # Project README (this file)
+eslint.config.js           # ESLint configuration
+index.html                 # Main HTML file
+package-lock.json          # NPM lock file
+package.json               # NPM dependencies
+vite.config.js             # Vite configuration
 
 Prerequisites
 
