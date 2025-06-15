@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000';
+const API_URL = 'http://localhost:5000';
 
 export const getCommodities = () => axios.get(`${API_URL}/get_options`);
 export const getDistricts = (commodity) => axios.get(`${API_URL}/get_options?commodity=${commodity}`);

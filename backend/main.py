@@ -72,7 +72,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from predictor import AgriculturalPricePredictor
-from backend.crop_predictor import CropPredictor
+from crop_predictor import CropPredictor
 from typing import Optional
 
 app = FastAPI()
