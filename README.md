@@ -1,48 +1,60 @@
-🌾 AgriPredict
-AgriPredict is a web application built to help farmers and agriculture enthusiasts by providing tools for:
+# 🌾 AgriPredict
 
-📈 Commodity Price Prediction
+AgriPredict is a full-stack web application designed to empower farmers and agriculture professionals with data-driven tools for smarter decision-making.
 
-📊 Historical Price Trend Analysis
+## 🚀 Features
 
-🌱 Crop Recommendation based on soil and environmental parameters
+- **User Authentication:** Register, login, and logout with secure credential storage.
+- **Price Prediction:** Forecast future prices for selected commodities in chosen districts and markets using machine learning models.
+- **Historical Data:** Analyze real market data trends with interactive charts.
+- **Crop Recommendation:** Suggests the best crop to grow based on soil nutrients (N, P, K), temperature, humidity, pH, and rainfall.
+- **Weather Forecast:** Get real-time weather updates for any location using OpenWeatherMap API.
+- **Market Comparison:** Compare modal prices for a commodity across different markets in a district, visualized with charts.
+- **Crop Calendar & Reminders:** View sowing/harvesting times for crops and set personal reminders for agricultural activities.
 
-The app combines a Python (FastAPI) backend with a React + Vite frontend styled using Tailwind CSS.
+## 🛠 Tech Stack
 
-🚀 Features
-Price Prediction: Forecast future prices for selected commodities in chosen districts and markets.
-
-Historical Data: Analyze trends using real market data.
-
-Crop Recommendation: Suggests the best crop to grow based on N, P, K, temperature, humidity, pH, and rainfall.
-
-🛠 Tech Stack
-Backend: Python, FastAPI/Flask, scikit-learn, pandas, statsmodels
-
-Frontend: React, Vite, Tailwind CSS
+- **Backend:** Python, FastAPI, SQLAlchemy, SQLite, scikit-learn, pandas, statsmodels
+- **Frontend:** React, Vite, Tailwind CSS, Chart.js (react-chartjs-2), Axios
+- **APIs:** OpenWeatherMap for weather data
 
 ## 📦 Project Structure
 
 ```text
 backend/
-├── main.py              # API server
+├── main.py              # API server entrypoint
+├── auth.py              # User authentication endpoints
+├── db.py                # Database models and session
 ├── crop_predictor.py    # Crop ML model logic
 ├── predictor.py         # ARIMA model for price prediction
+├── calendar_api.py      # Crop calendar & reminders endpoints
 ├── *.csv                # Datasets
 ├── *.pkl                # Trained ML models
 
 frontend/
 └── src/
-    ├── Home.jsx
-    ├── PricePrediction.jsx
-    ├── HistoricalData.jsx
-    ├── CropPrediction.jsx
+    ├── pages/
+    │   ├── Home.jsx
+    │   ├── PricePrediction.jsx
+    │   ├── HistoricalData.jsx
+    │   ├── CropPrediction.jsx
+    │   ├── MarketComparison.jsx
+    │   ├── CropCalendar.jsx
+    │   ├── Login.jsx
+    │   └── Register.jsx
+    ├── components/
+    │   ├── MarketComparisonChart.jsx
+    │   ├── CalendarView.jsx
+    │   └── ReminderForm.jsx
     └── services/
-        └── api.js       # API integration
+        ├── api.js       # API integration
+        ├── auth.js      # Auth API integration
+        └── calendar.js  # Calendar/reminder API integration
 ```
 
-⚙️ Getting Started
-🔙 Backend Setup
+## ⚙️ Getting Started
+
+### 🔙 Backend Setup
 
 ```
 # Clone the repository
@@ -65,7 +77,7 @@ uvicorn main:app --reload
 ```
 Backend runs at: http://localhost:5000
 
-💻 Frontend Setup
+### 💻 Frontend Setup
 ```
 cd frontend
 npm install
