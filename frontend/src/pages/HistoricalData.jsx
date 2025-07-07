@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getCommodities, getDistricts, getMarkets, getHistoricalData } from '../services/api';
+import PriceTrendChart from '../components/PriceTrendChart';
 
 const HistoricalData = () => {
   const [commodities, setCommodities] = useState([]);
@@ -189,6 +190,11 @@ const HistoricalData = () => {
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">
               Historical Data
             </h2>
+            {/* Chart */}
+            <div className="mb-8">
+              <PriceTrendChart history={history} />
+            </div>
+            {/* Table */}
             <div className="overflow-x-auto">
               <table className="w-full border-collapse bg-white rounded-lg shadow-sm">
                 <thead>

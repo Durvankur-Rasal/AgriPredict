@@ -67,13 +67,15 @@
 
 
 # main.py
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request, HTTPException, Query
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from predictor import AgriculturalPricePredictor
 from crop_predictor import CropPredictor
 from typing import Optional
+from crop_calendar_api import router as calendar_router
+from auth import router as auth_router
 
 app = FastAPI()
 
@@ -89,6 +91,10 @@ app.add_middleware(
 # Instantiate both predictors
 agri_predictor = AgriculturalPricePredictor()
 crop_predictor = CropPredictor()
+
+# Include the calendar router
+app.include_router(calendar_router)
+app.include_router(auth_router)
 
 
 # ---------- Models ----------
@@ -148,5 +154,29 @@ async def predict_crop(data: CropInput):
             data.N, data.P, data.K, data.temperature, data.humidity, data.pH, data.rainfall
         )
         return {"crop": crop}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+from fastapi import Query
+
+@app.get("/market_comparison")
+async def market_comparison(commodity: str = Query(...), district: str = Query(...)):
+    """
+    Returns modal prices for all markets in a district for a given commodity.
+    """
+    try:
+        # Get all markets for the district and commodity
+        markets = agri_predictor.get_markets(district, commodity)
+        results = []
+        for market in markets:
+            history = agri_predictor.get_historical_data(district, commodity, market)
+            if history:
+                # Use the latest modal price
+                latest = history[-1]
+                results.append({
+                    "market": market,
+                    "modal_price": latest["Modal Price (Rs./Quintal)"]
+                })
+        return results
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))

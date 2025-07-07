@@ -1,0 +1,9 @@
+{
+  "wheat": {
+    "activities": [
+      {"activity": "Sowing", "start": "November", "end": "December"},
+      {"activity": "Irrigation", "start": "December", "end": "February"},
+      {"activity": "Harvesting", "start": "March", "end": "April"}
+    ]
+  }
+}
